@@ -14,7 +14,6 @@ class RoutesClass {
       name: splash,
       page: () => const LoginScreen(),
       transition: Transition.fade,
-      transitionDuration: const Duration(seconds: 1),
     ),
   ];
 }

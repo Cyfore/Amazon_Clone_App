@@ -5,8 +5,14 @@ class AppLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      ImageConstants.amazon,
+    return Align(
+      alignment: Alignment.center,
+      child: Image.asset(
+        ImageConstants.amazon,
+        height: 100,
+        width: 250,
+        fit: BoxFit.cover,
+      ),
     );
   }
 }
