@@ -1,9 +1,10 @@
-import 'package:amazon_clone_app/features/common/widgets/app_logo.dart';
+
 import 'package:amazon_clone_app/features/common/widgets/text/bold_text.dart';
 import 'package:amazon_clone_app/features/common/widgets/text/regular_text.dart';
 import 'package:amazon_clone_app/constants/consts.dart';
 import 'package:amazon_clone_app/constants/paddings.dart';
 
+import '../../../common/widgets/app_logo.dart';
 import '../auth_constants/auth_constants.dart';
 import 'widgets/login_button.dart';
 

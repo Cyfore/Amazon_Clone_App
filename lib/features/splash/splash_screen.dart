@@ -1,7 +1,8 @@
-import 'package:amazon_clone_app/features/common/widgets/app_logo.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../common/widgets/app_logo.dart';
 import '../auth/login/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {

@@ -16,7 +16,7 @@ class AuthConstants {
 
   // Abaout Login Button
   static List<Map<String, String>> info = [
-    {'route': RoutesClass.splash, 'text': AuthConstants.signInButton},
+    {'route': RoutesClass.signin, 'text': AuthConstants.signInButton},
     {'route': RoutesClass.splash, 'text': AuthConstants.signUpButton},
     {'route': RoutesClass.splash, 'text': AuthConstants.passLogin}
   ];
