@@ -13,6 +13,7 @@ class AuthConstants {
 
   // Auth Screen String
   static const createAccount = 'Hesap oluşturun';
+  static const signinAccount = 'Giriş yapın';
 
   // Color
   static const signInButtonColor = 0xE6E6CA5B;
@@ -20,8 +21,8 @@ class AuthConstants {
 
   // Abaout Login Button
   static List<Map<String, String>> info = [
-    {'route': RoutesClass.signin, 'text': AuthConstants.signInButton},
-    {'route': RoutesClass.splash, 'text': AuthConstants.signUpButton},
+    {'route': RoutesClass.auth, 'text': AuthConstants.signInButton},
+    {'route': RoutesClass.auth, 'text': AuthConstants.signUpButton},
     {'route': RoutesClass.splash, 'text': AuthConstants.passLogin}
   ];
 

@@ -3,9 +3,10 @@ library signin_screen;
 import 'package:amazon_clone_app/common/widgets/radio_list_tile/custom_radio_list_tile.dart';
 import 'package:amazon_clone_app/common/widgets/textfield/custom_textfiled.dart';
 import 'package:amazon_clone_app/constants/consts.dart';
+import 'package:amazon_clone_app/features/auth/auth_constants/auth_constants.dart';
 
-import '../../../common/widgets/app_logo.dart';
 import '../../../common/widgets/text/custom_bold_text.dart';
+import 'auth_appbar.dart';
 
 enum Auth {
   signin,
@@ -20,19 +21,22 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
-  Auth _auth = Auth.signup;
+  Auth _auth = Auth.signin;
 
   final _signUpFormKey = GlobalKey<FormState>();
   final _signInFormKey = GlobalKey<FormState>();
-  final emailcontroller = TextEditingController();
+  final TextEditingController emailcontroller = TextEditingController();
+
+  @override
+  void dispose() {
+    emailcontroller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: const AppLogo(height: 50, width: 130),
-        backgroundColor: MyColors.lightGrey,
-      ),
+      appBar: const AuthAppBar(),
       body: Padding(
         padding: const ScreenPadding.all(),
         child: Column(
@@ -40,7 +44,7 @@ class _AuthScreenState extends State<AuthScreen> {
           children: [
             const CustomBoldText(text: AppConstants.welcome),
             CustomRadioListTile(
-              text: Auth.signup.name,
+              text: AuthConstants.createAccount,
               value: Auth.signup,
               groupValue: _auth,
               onChanged: (val) {
@@ -58,7 +62,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     ],
                   )),
             CustomRadioListTile(
-              text: Auth.signin.name,
+              text: AuthConstants.signinAccount,
               value: Auth.signin,
               groupValue: _auth,
               onChanged: (val) {
