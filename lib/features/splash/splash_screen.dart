@@ -1,4 +1,4 @@
-import 'package:amazon_clone_app/common/widgets/app_logo.dart';
+import 'package:amazon_clone_app/features/common/widgets/app_logo.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

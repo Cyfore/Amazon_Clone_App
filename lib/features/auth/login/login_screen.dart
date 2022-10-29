@@ -1,6 +1,6 @@
-import 'package:amazon_clone_app/common/widgets/app_logo.dart';
-import 'package:amazon_clone_app/common/widgets/text/bold_text.dart';
-import 'package:amazon_clone_app/common/widgets/text/regular_text.dart';
+import 'package:amazon_clone_app/features/common/widgets/app_logo.dart';
+import 'package:amazon_clone_app/features/common/widgets/text/bold_text.dart';
+import 'package:amazon_clone_app/features/common/widgets/text/regular_text.dart';
 import 'package:amazon_clone_app/constants/consts.dart';
 import 'package:amazon_clone_app/constants/paddings.dart';
 
@@ -23,16 +23,30 @@ class LoginScreen extends StatelessWidget {
             const CustomBoldText(text: AuthConstants.signinInfo),
             (context.screenHeight * 0.01).heightBox,
             const Info(),
-            Expanded(
-              child: ListView.builder(
-                itemCount: AuthConstants.info.length,
-                itemBuilder: (context, index) => LoginButton(
-                  info: AuthConstants.info[index],
-                  color: AuthConstants.colors[index],
-                ),
-              ),
-            )
+            const ButtonListView(),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class ButtonListView extends StatelessWidget {
+  const ButtonListView({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: ListView.builder(
+        itemCount: AuthConstants.info.length,
+        itemBuilder: (context, index) => Padding(
+          padding: LoginButtonPadding.loginButtonPadding,
+          child: LoginButton(
+            info: AuthConstants.info[index],
+            color: AuthConstants.colors[index],
+          ),
         ),
       ),
     );
@@ -52,4 +66,10 @@ class Info extends StatelessWidget {
       ),
     );
   }
+}
+
+class LoginButtonPadding {
+  static const double _normalValue = 6;
+
+  static const loginButtonPadding = EdgeInsets.only(bottom: _normalValue);
 }
