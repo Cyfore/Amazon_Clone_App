@@ -2,7 +2,7 @@ import '../../../routes/routes.dart';
 
 class AuthConstants {
   AuthConstants._();
-  // String
+  // Login Screen String
   static const preliminaryInformation =
       'İstek listenizi görüntüleyin\nSiparişleri Bulma ve Sınıflandırma\nAlışverişlerinizi takip edin';
   static const signinInfo = 'Hesabınıza giriş yapın';
@@ -10,6 +10,10 @@ class AuthConstants {
   static const signUpButton = 'Yeni bir Amazon.com.tr kullanıcısı mısınız? Hesap oluşturun';
   static const passLogin = 'Girişi atla';
   static const buttonError = 'Hata';
+
+  // Auth Screen String
+  static const createAccount = 'Hesap oluşturun';
+
   // Color
   static const signInButtonColor = 0xE6E6CA5B;
   static const orderButtonColor = 0xFFD3D6D7;

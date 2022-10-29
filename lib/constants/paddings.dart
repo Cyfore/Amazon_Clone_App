@@ -11,4 +11,6 @@ class ScreenPadding extends EdgeInsets {
   const ScreenPadding.onlyBottom() : super.only(bottom: _normalValue);
   const ScreenPadding.onlyTop() : super.only(top: _normalValue);
   const ScreenPadding.onlyRight() : super.only(right: _normalValue);
+
+  static const allZero = EdgeInsets.all(0);
 }

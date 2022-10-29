@@ -1,7 +1,7 @@
 import 'package:amazon_clone_app/constants/consts.dart';
 
-class ErrorText extends StatelessWidget {
-  const ErrorText({super.key});
+class CustomErrorText extends StatelessWidget {
+  const CustomErrorText({super.key});
 
   @override
   Widget build(BuildContext context) {

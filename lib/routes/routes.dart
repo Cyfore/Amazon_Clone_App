@@ -1,6 +1,6 @@
 import 'package:amazon_clone_app/features/auth/error/error_screen.dart';
 import 'package:amazon_clone_app/features/auth/login/login_screen.dart';
-import 'package:amazon_clone_app/features/auth/signin/signin_screen.dart';
+import 'package:amazon_clone_app/features/auth/auth_screen/signin_screen.dart';
 import 'package:amazon_clone_app/features/splash/splash_screen.dart';
 import 'package:get/get.dart';
 
@@ -22,6 +22,6 @@ class RoutesClass {
       transition: Transition.fade,
     ),
     GetPage(name: error, page: () => const ErrorScreen()),
-    GetPage(name: signin, page: () => const SignInScreen()),
+    GetPage(name: signin, page: () => const AuthScreen()),
   ];
 }

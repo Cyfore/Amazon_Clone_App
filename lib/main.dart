@@ -1,6 +1,4 @@
 import 'package:amazon_clone_app/routes/routes.dart';
-import 'package:get/get.dart';
-
 import 'constants/consts.dart';
 
 void main() {

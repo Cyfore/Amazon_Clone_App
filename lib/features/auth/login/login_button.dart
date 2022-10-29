@@ -1,7 +1,4 @@
-import 'package:amazon_clone_app/common/widgets/text/regular_text.dart';
-import 'package:amazon_clone_app/constants/consts.dart';
-import 'package:amazon_clone_app/features/auth/auth_constants/auth_constants.dart';
-import 'package:amazon_clone_app/routes/routes.dart';
+part of login_screen;
 
 class LoginButton extends StatelessWidget {
   const LoginButton({super.key, required this.info, required this.color});

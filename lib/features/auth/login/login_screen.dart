@@ -1,12 +1,13 @@
+library login_screen;
 
-import 'package:amazon_clone_app/features/common/widgets/text/bold_text.dart';
-import 'package:amazon_clone_app/features/common/widgets/text/regular_text.dart';
+import 'package:amazon_clone_app/common/widgets/text/custom_bold_text.dart';
 import 'package:amazon_clone_app/constants/consts.dart';
-import 'package:amazon_clone_app/constants/paddings.dart';
-
 import '../../../common/widgets/app_logo.dart';
+import '../../../common/widgets/text/custom_regular_text.dart';
+import '../../../routes/routes.dart';
 import '../auth_constants/auth_constants.dart';
-import 'widgets/login_button.dart';
+part 'login_button.dart';
+part 'button_list_view.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -26,28 +27,6 @@ class LoginScreen extends StatelessWidget {
             const Info(),
             const ButtonListView(),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class ButtonListView extends StatelessWidget {
-  const ButtonListView({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        itemCount: AuthConstants.info.length,
-        itemBuilder: (context, index) => Padding(
-          padding: LoginButtonPadding.loginButtonPadding,
-          child: LoginButton(
-            info: AuthConstants.info[index],
-            color: AuthConstants.colors[index],
-          ),
         ),
       ),
     );
