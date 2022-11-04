@@ -22,7 +22,6 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
-  final Auth _auth = Auth.signup;
   final _signUpFormKey = GlobalKey<FormState>();
   final _signInFormKey = GlobalKey<FormState>();
   final TextEditingController emailcontroller = TextEditingController();
@@ -58,8 +57,17 @@ class _AuthScreenState extends State<AuthScreen> {
                 Form(
                     key: _signUpFormKey,
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CustomTextField(controller: emailcontroller),
+                        const CustomBoldText(text: AuthConstants.userSurAndName, fontSize: AuthConstants.twenty),
+                        CustomTextFormField(controller: emailcontroller),
+                        10.heightBox,
+                        const CustomBoldText(text: AuthConstants.emailOrPhone, fontSize: AuthConstants.twenty),
+                        CustomTextFormField(controller: emailcontroller),
+                        10.heightBox,
+                        const CustomBoldText(text: AuthConstants.creatPassword, fontSize: AuthConstants.twenty),
+                        CustomTextFormField(controller: emailcontroller),
+                        
                       ],
                     )),
               CustomRadioListTile(
@@ -75,8 +83,10 @@ class _AuthScreenState extends State<AuthScreen> {
                 Form(
                     key: _signUpFormKey,
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CustomTextField(controller: emailcontroller),
+                        const CustomBoldText(text: AuthConstants.emailOrPhone, fontSize: AuthConstants.twenty),
+                        CustomTextFormField(controller: emailcontroller),
                       ],
                     )),
             ],

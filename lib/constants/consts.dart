@@ -5,6 +5,6 @@ export './styles.dart';
 export 'app_constants.dart';
 export 'package:velocity_x/velocity_x.dart';
 export 'package:flutter/material.dart';
-export './theme_data.dart';
+export 'helper_methods.dart';
 export 'package:get/get.dart';
 export './paddings.dart';
