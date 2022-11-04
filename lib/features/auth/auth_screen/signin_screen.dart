@@ -6,6 +6,7 @@ import 'package:amazon_clone_app/constants/consts.dart';
 import 'package:amazon_clone_app/controllers/auth_controller.dart';
 import 'package:amazon_clone_app/features/auth/auth_constants/auth_constants.dart';
 
+import '../../../common/widgets/button/custom_button.dart';
 import '../../../common/widgets/text/custom_bold_text.dart';
 import 'auth_appbar.dart';
 
@@ -67,7 +68,9 @@ class _AuthScreenState extends State<AuthScreen> {
                         10.heightBox,
                         const CustomBoldText(text: AuthConstants.creatPassword, fontSize: AuthConstants.twenty),
                         CustomTextFormField(controller: emailcontroller),
-                        
+                        const CustomButton(
+                          text: 'Devam et',
+                        ),
                       ],
                     )),
               CustomRadioListTile(
@@ -87,6 +90,9 @@ class _AuthScreenState extends State<AuthScreen> {
                       children: [
                         const CustomBoldText(text: AuthConstants.emailOrPhone, fontSize: AuthConstants.twenty),
                         CustomTextFormField(controller: emailcontroller),
+                        const CustomButton(
+                          text: 'Devam et',
+                        ),
                       ],
                     )),
             ],
