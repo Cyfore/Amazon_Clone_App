@@ -31,4 +31,6 @@ class AuthConstants {
     AuthConstants.orderButtonColor,
     AuthConstants.orderButtonColor,
   ];
+
+  static List authRoute = [1, 2, 3];
 }

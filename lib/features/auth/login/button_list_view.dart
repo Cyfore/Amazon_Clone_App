@@ -13,6 +13,7 @@ class ButtonListView extends StatelessWidget {
         itemBuilder: (context, index) => Padding(
           padding: LoginButtonPadding.loginButtonPadding,
           child: LoginButton(
+            authRoute: AuthConstants.authRoute[index],
             info: AuthConstants.info[index],
             color: AuthConstants.colors[index],
           ),
