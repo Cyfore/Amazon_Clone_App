@@ -17,6 +17,9 @@ class AuthConstants {
   static const userSurAndName = "Adı ve soyadı";
   static const emailOrPhone = "Cep telefonu numarası veya e-posta";
   static const creatPassword = "Parola oluşturun";
+
+                // TextFormFiled
+
   // Color
   static const signInButtonColor = 0xE6E6CA5B;
   static const orderButtonColor = 0xFFD3D6D7;

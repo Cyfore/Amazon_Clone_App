@@ -8,3 +8,4 @@ export 'package:flutter/material.dart';
 export 'helper_methods.dart';
 export 'package:get/get.dart';
 export './paddings.dart';
+export 'package:nil/nil.dart';
