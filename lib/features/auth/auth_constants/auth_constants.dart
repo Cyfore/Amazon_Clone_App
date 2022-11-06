@@ -22,7 +22,7 @@ class AuthConstants {
   static const orderButtonColor = 0xFFD3D6D7;
 
   //Size
-  static const double twenty = 20;
+  static const double twentyP = 20;
 
   // Abaout Login Button
   static List<Map<String, String>> info = [

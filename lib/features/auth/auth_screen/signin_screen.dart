@@ -38,6 +38,7 @@ class _AuthScreenState extends State<AuthScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const AuthAppBar(),
+      backgroundColor: MyColors.lightGrey,
       body: Padding(
         padding: const ScreenPadding.all(),
         child: GetBuilder<AuthController>(
@@ -45,14 +46,19 @@ class _AuthScreenState extends State<AuthScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const CustomBoldText(text: AppConstants.welcome),
-              CustomRadioListTile(
-                text: AuthConstants.createAccount,
-                value: Auth.signup,
-                groupValue: controller.auth,
-                onChanged: (val) {
-                  controller.radioOnChanged(val);
-                  controller.authRoute(false);
-                },
+              Container(
+                color:
+                    controller.authRoute.value == true ? const Color.fromARGB(255, 225, 225, 225) : MyColors.whiteColor,
+                padding: const EdgeInsets.only(left: 10),
+                child: CustomRadioListTile(
+                  text: AuthConstants.createAccount,
+                  value: Auth.signup,
+                  groupValue: controller.auth,
+                  onChanged: (val) {
+                    controller.radioOnChanged(val);
+                    controller.authRoute(false);
+                  },
+                ),
               ),
               if (controller.auth == Auth.signup && controller.authRoute.value == false)
                 Form(
@@ -60,27 +66,32 @@ class _AuthScreenState extends State<AuthScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const CustomBoldText(text: AuthConstants.userSurAndName, fontSize: AuthConstants.twenty),
+                        const CustomBoldText(text: AuthConstants.userSurAndName, fontSize: AuthConstants.twentyP),
                         CustomTextFormField(controller: emailcontroller),
                         10.heightBox,
-                        const CustomBoldText(text: AuthConstants.emailOrPhone, fontSize: AuthConstants.twenty),
+                        const CustomBoldText(text: AuthConstants.emailOrPhone, fontSize: AuthConstants.twentyP),
                         CustomTextFormField(controller: emailcontroller),
                         10.heightBox,
-                        const CustomBoldText(text: AuthConstants.creatPassword, fontSize: AuthConstants.twenty),
+                        const CustomBoldText(text: AuthConstants.creatPassword, fontSize: AuthConstants.twentyP),
                         CustomTextFormField(controller: emailcontroller),
                         const CustomButton(
-                          text: 'Devam et',
+                          text: AppConstants.continue_,
                         ),
                       ],
-                    )),
-              CustomRadioListTile(
-                text: AuthConstants.signinAccount,
-                value: Auth.signin,
-                groupValue: controller.auth,
-                onChanged: (val) {
-                  controller.radioOnChanged(val);
-                  controller.authRoute(true);
-                },
+                    )).box.color(Colors.white).padding(SigninPadding.onlyLAndRTwentyP).make(),
+              Container(
+                color: controller.authRoute.value == false
+                    ? const Color.fromARGB(255, 225, 225, 225)
+                    : MyColors.whiteColor,
+                child: CustomRadioListTile(
+                  text: AuthConstants.signinAccount,
+                  value: Auth.signin,
+                  groupValue: controller.auth,
+                  onChanged: (val) {
+                    controller.radioOnChanged(val);
+                    controller.authRoute(true);
+                  },
+                ),
               ),
               if (controller.auth == Auth.signin && controller.authRoute.value == true)
                 Form(
@@ -88,17 +99,25 @@ class _AuthScreenState extends State<AuthScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const CustomBoldText(text: AuthConstants.emailOrPhone, fontSize: AuthConstants.twenty),
+                        const CustomBoldText(text: AuthConstants.emailOrPhone, fontSize: AuthConstants.twentyP),
                         CustomTextFormField(controller: emailcontroller),
                         const CustomButton(
-                          text: 'Devam et',
+                          text: AppConstants.continue_,
                         ),
                       ],
-                    )),
+                    )).box.color(Colors.white).padding(SigninPadding.onlyLAndRTwentyP).make(),
             ],
           ),
         ),
       ),
     );
   }
+}
+
+class SigninPadding {
+  //only
+  static const onlyLTwentyP = EdgeInsets.only(left: AuthConstants.twentyP);
+  static const onlyLAndRTwentyP = EdgeInsets.only(left: AuthConstants.twentyP, right: AuthConstants.twentyP);
+
+  //
 }

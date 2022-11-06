@@ -9,4 +9,5 @@ class AppConstants {
 
   // String
   static const welcome = 'Hoşgeldiniz';
+  static const continue_ = "Devam et";
 }
