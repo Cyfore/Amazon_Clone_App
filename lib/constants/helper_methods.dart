@@ -7,6 +7,7 @@ ThemeData getThemeData() => ThemeData(
 
 InputDecoration inputDecoration({Widget? suffixIcon}) => InputDecoration(
       border: const OutlineInputBorder(
+        
         borderSide: BorderSide(
           color: Colors.white,
         ),

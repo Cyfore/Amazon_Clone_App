@@ -5,6 +5,7 @@ import '../features/auth/auth_screen/signin_screen.dart';
 class AuthController extends GetxController {
   Auth auth = Auth.signin;
   RxBool authRoute = false.obs;
+  RxBool isPasswordVisible = false.obs;
   static AuthController instance = Get.find();
   final signUpFormKey = GlobalKey<FormState>();
   late TextEditingController emailAndPhoneController, passwordController, userNameAndSurController;
@@ -19,17 +20,14 @@ class AuthController extends GetxController {
     passwordController = TextEditingController();
     userNameAndSurController = TextEditingController();
 
-    emailAndPhoneController.addListener(
-      () => update(),
-    );
-    passwordController.addListener(
-      () => update(),
-    );
-    userNameAndSurController.addListener(
-      () => update(),
-    );
-    update();
+    controllerAddListener(emailAndPhoneController);
+    controllerAddListener(passwordController);
+    controllerAddListener(userNameAndSurController);
     super.onInit();
+  }
+
+  controllerAddListener(TextEditingController controller) {
+    controller.addListener(() => update());
   }
 
   void signOut() {

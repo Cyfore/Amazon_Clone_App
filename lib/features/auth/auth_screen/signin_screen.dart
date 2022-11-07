@@ -34,6 +34,8 @@ class _AuthScreenState extends State<AuthScreen> {
     super.initState();
   }
 
+  RxBool isPasswordVisible = false.obs;
+
   @override
   void dispose() {
     super.dispose();
@@ -67,42 +69,51 @@ class _AuthScreenState extends State<AuthScreen> {
               ),
               if (controller.auth == Auth.signup && controller.authRoute.value == false)
                 Form(
-                    key: AuthController.instance.signUpFormKey,
+                    key: controller.signUpFormKey,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const CustomBoldText(text: AuthConstants.userSurAndName, fontSize: AuthConstants.twentyP),
                         CustomTextFormField(
-                            controller: AuthController.instance.userNameAndSurController,
-                            suffixIcon: AuthController.instance.userNameAndSurController.text.isEmpty
-                                ? nil
+                            controller: controller.userNameAndSurController,
+                            suffixIcon: controller.userNameAndSurController.text.isEmpty
+                                ? const SizedBox()
                                 : IconButton(
                                     onPressed: () {
-                                      AuthController.instance.userNameAndSurController.clear();
+                                      controller.userNameAndSurController.clear();
                                     },
                                     icon: const Icon(Icons.close_outlined))),
                         10.heightBox,
                         const CustomBoldText(text: AuthConstants.emailOrPhone, fontSize: AuthConstants.twentyP),
                         CustomTextFormField(
-                            controller: AuthController.instance.emailAndPhoneController,
-                            suffixIcon: AuthController.instance.emailAndPhoneController.text.isEmpty
+                            controller: controller.emailAndPhoneController,
+                            suffixIcon: controller.emailAndPhoneController.text.isEmpty
                                 ? nil
                                 : IconButton(
                                     onPressed: () {
-                                      AuthController.instance.emailAndPhoneController.clear();
+                                      controller.emailAndPhoneController.clear();
                                     },
                                     icon: const Icon(Icons.close_outlined))),
                         10.heightBox,
                         const CustomBoldText(text: AuthConstants.creatPassword, fontSize: AuthConstants.twentyP),
                         CustomTextFormField(
-                            controller: AuthController.instance.passwordController,
-                            suffixIcon: AuthController.instance.passwordController.text.isEmpty
+                            obscureText: controller.isPasswordVisible.value ? false : true,
+                            controller: controller.passwordController,
+                            suffixIcon: controller.passwordController.text.isEmpty
                                 ? nil
                                 : IconButton(
                                     onPressed: () {
-                                      AuthController.instance.passwordController.clear();
+                                      if (controller.isPasswordVisible == isPasswordVisible) {
+                                        controller.isPasswordVisible(true);
+                                        controller.update();
+                                      } else {
+                                        controller.isPasswordVisible(false);
+                                        controller.update();
+                                      }
                                     },
-                                    icon: const Icon(Icons.close_outlined))),
+                                    icon: controller.isPasswordVisible == isPasswordVisible
+                                        ? const Icon(Icons.visibility_off)
+                                        : const Icon(Icons.visibility_outlined))),
                         const CustomButton(text: AppConstants.continue_),
                       ],
                     )).box.color(Colors.white).padding(SigninPadding.onlyLAndRTwentyP).make(),
@@ -123,12 +134,12 @@ class _AuthScreenState extends State<AuthScreen> {
               ),
               if (controller.auth == Auth.signin && controller.authRoute.value == true)
                 Form(
-                    key: AuthController.instance.signUpFormKey,
+                    key: controller.signUpFormKey,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const CustomBoldText(text: AuthConstants.emailOrPhone, fontSize: AuthConstants.twentyP),
-                        CustomTextFormField(controller: AuthController.instance.emailAndPhoneController),
+                        CustomTextFormField(controller: controller.emailAndPhoneController),
                         const CustomButton(
                           text: AppConstants.continue_,
                         ),
