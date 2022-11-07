@@ -24,22 +24,12 @@ class AuthScreen extends StatefulWidget {
 
 class _AuthScreenState extends State<AuthScreen> {
   final controller = Get.put(AuthController());
-  final test = TextEditingController();
 
-  @override
-  void initState() {
-    test.addListener(() {
-      setState(() {});
-    });
-    super.initState();
-  }
+  // FocusNodes
+  final FocusNode _emailFocusNode = FocusNode();
+  final FocusNode _passwordFocusNode = FocusNode();
 
   RxBool isPasswordVisible = false.obs;
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -139,7 +129,17 @@ class _AuthScreenState extends State<AuthScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const CustomBoldText(text: AuthConstants.emailOrPhone, fontSize: AuthConstants.twentyP),
-                        CustomTextFormField(controller: controller.emailAndPhoneController),
+                        CustomTextFormField(
+                            keyboardType: TextInputType.emailAddress,
+                            textInputAction: TextInputAction.next,
+                            controller: controller.emailAndPhoneController,
+                            suffixIcon: controller.emailAndPhoneController.text.isEmpty
+                                ? nil
+                                : IconButton(
+                                    onPressed: () {
+                                      controller.emailAndPhoneController.clear();
+                                    },
+                                    icon: const Icon(Icons.close_outlined))),
                         const CustomButton(
                           text: AppConstants.continue_,
                         ),
