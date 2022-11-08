@@ -7,7 +7,7 @@ class CustomTextFormField extends StatelessWidget {
       this.suffixIcon,
       this.obscureText = false,
       this.keyboardType = TextInputType.text,
-      this.textInputAction = TextInputAction.done});
+      this.textInputAction = TextInputAction.next});
   final bool obscureText;
   final TextEditingController controller;
   final TextInputType keyboardType;
@@ -17,7 +17,7 @@ class CustomTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       keyboardType: keyboardType,
-      textInputAction: TextInputAction.done,
+      textInputAction: textInputAction,
       controller: controller,
       obscureText: obscureText,
       decoration: inputDecoration(suffixIcon: suffixIcon),

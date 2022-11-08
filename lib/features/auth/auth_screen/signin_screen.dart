@@ -25,10 +25,6 @@ class AuthScreen extends StatefulWidget {
 class _AuthScreenState extends State<AuthScreen> {
   final controller = Get.put(AuthController());
 
-  // FocusNodes
-  final FocusNode _emailFocusNode = FocusNode();
-  final FocusNode _passwordFocusNode = FocusNode();
-
   RxBool isPasswordVisible = false.obs;
 
   @override
@@ -87,6 +83,7 @@ class _AuthScreenState extends State<AuthScreen> {
                         10.heightBox,
                         const CustomBoldText(text: AuthConstants.creatPassword, fontSize: AuthConstants.twentyP),
                         CustomTextFormField(
+                            textInputAction: TextInputAction.done,
                             obscureText: controller.isPasswordVisible.value ? false : true,
                             controller: controller.passwordController,
                             suffixIcon: controller.passwordController.text.isEmpty
