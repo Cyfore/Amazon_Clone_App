@@ -1,7 +1,7 @@
-part of login_screen;
+part of welcome_screen;
 
-class LoginButton extends StatelessWidget {
-  const LoginButton({super.key, required this.info, required this.color, required this.authRoute});
+class WelcomeButton extends StatelessWidget {
+  const WelcomeButton({super.key, required this.info, required this.color, required this.authRoute});
   final Map<String, String> info;
   final int color;
   final int authRoute;

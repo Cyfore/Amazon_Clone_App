@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../common/widgets/app_logo.dart';
-import '../auth/login/login_screen.dart';
+import '../auth/welcome/welcome_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -14,7 +14,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   changeScreen() {
     Future.delayed(const Duration(seconds: 2), () {
-      Get.to(const LoginScreen(), duration: const Duration(seconds: 1), transition: Transition.fade);
+      Get.to(const WelcomeScreen(), duration: const Duration(seconds: 1), transition: Transition.fade);
     });
   }
 

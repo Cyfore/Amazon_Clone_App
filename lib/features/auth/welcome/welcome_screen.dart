@@ -1,4 +1,4 @@
-library login_screen;
+library welcome_screen;
 
 import 'package:amazon_clone_app/common/widgets/text/custom_bold_text.dart';
 import 'package:amazon_clone_app/constants/consts.dart';
@@ -8,11 +8,11 @@ import '../../../common/widgets/text/custom_regular_text.dart';
 import '../../../routes/routes.dart';
 import '../auth_constants/auth_constants.dart';
 import '../auth_screen/signin_screen.dart';
-part 'login_button.dart';
+part 'welcome_button.dart';
 part 'button_list_view.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -50,8 +50,8 @@ class Info extends StatelessWidget {
   }
 }
 
-class LoginButtonPadding {
+class WelcomeButtonPadding {
   static const double _normalValue = 6;
 
-  static const loginButtonPadding = EdgeInsets.only(bottom: _normalValue);
+  static const welcomeButtonPadding = EdgeInsets.only(bottom: _normalValue);
 }
