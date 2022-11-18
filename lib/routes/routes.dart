@@ -1,9 +1,10 @@
 import 'package:amazon_clone_app/features/auth/error/error_screen.dart';
-import 'package:amazon_clone_app/features/auth/auth_screen/signin_screen.dart';
+
 import 'package:amazon_clone_app/features/splash/splash_screen.dart';
 import 'package:get/get.dart';
 
-import '../features/auth/welcome/welcome_screen.dart';
+import '../features/auth/auth_screen.dart';
+import '../features/welcome/welcome_screen.dart';
 
 class RoutesClass {
   static const String splash = '/';

@@ -3,11 +3,12 @@ library welcome_screen;
 import 'package:amazon_clone_app/common/widgets/text/custom_bold_text.dart';
 import 'package:amazon_clone_app/constants/consts.dart';
 import 'package:amazon_clone_app/controllers/auth_controller.dart';
-import '../../../common/widgets/app_logo.dart';
-import '../../../common/widgets/text/custom_regular_text.dart';
-import '../../../routes/routes.dart';
-import '../auth_constants/auth_constants.dart';
-import '../auth_screen/signin_screen.dart';
+import '../../common/widgets/app_logo.dart';
+import '../../common/widgets/text/custom_regular_text.dart';
+import '../../routes/routes.dart';
+import '../auth/auth_constants/auth_constants.dart';
+
+import '../auth/auth_screen.dart';
 part 'welcome_button.dart';
 part 'button_list_view.dart';
 
