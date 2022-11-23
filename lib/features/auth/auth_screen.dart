@@ -5,6 +5,7 @@ import 'package:amazon_clone_app/common/widgets/textfield/custom_textfiled.dart'
 import 'package:amazon_clone_app/constants/consts.dart';
 import 'package:amazon_clone_app/controllers/auth_controller.dart';
 import 'package:amazon_clone_app/features/auth/auth_constants/auth_constants.dart';
+import 'package:amazon_clone_app/features/services/auth_service.dart';
 
 import '../../../common/widgets/button/custom_button.dart';
 import '../../../common/widgets/text/custom_bold_text.dart';
@@ -24,6 +25,7 @@ class AuthScreen extends StatefulWidget {
 
 class _AuthScreenState extends State<AuthScreen> {
   final controller = Get.put(AuthController());
+  final AuthService authService = AuthService();
 
   RxBool isPasswordVisible = false.obs;
 
@@ -72,12 +74,12 @@ class _AuthScreenState extends State<AuthScreen> {
                         10.heightBox,
                         const CustomBoldText(text: AuthConstants.emailOrPhone, fontSize: AuthConstants.twentyP),
                         CustomTextFormField(
-                            controller: controller.emailAndPhoneController,
-                            suffixIcon: controller.emailAndPhoneController.text.isEmpty
+                            controller: controller.emailAndPhoneControllerSignUp,
+                            suffixIcon: controller.emailAndPhoneControllerSignUp.text.isEmpty
                                 ? nil
                                 : IconButton(
                                     onPressed: () {
-                                      controller.emailAndPhoneController.clear();
+                                      controller.emailAndPhoneControllerSignUp.clear();
                                     },
                                     icon: const Icon(Icons.close_outlined))),
                         10.heightBox,
@@ -101,7 +103,13 @@ class _AuthScreenState extends State<AuthScreen> {
                                     icon: controller.isPasswordVisible == isPasswordVisible
                                         ? const Icon(Icons.visibility_off)
                                         : const Icon(Icons.visibility_outlined))),
-                        const CustomButton(text: AppConstants.continue_),
+                        CustomButton(
+                            text: AppConstants.continue_,
+                            onPressed: () {
+                              if (controller.signUpFormKey.currentState!.validate()) {
+                                controller.signUpUser(context: context);
+                              }
+                            }),
                       ],
                     )).box.color(Colors.white).padding(SigninPadding.onlyLAndRTwentyP).make(),
               Container(
@@ -121,7 +129,7 @@ class _AuthScreenState extends State<AuthScreen> {
               ),
               if (controller.auth == Auth.signin && controller.authRoute.value == true)
                 Form(
-                    key: controller.signUpFormKey,
+                    key: controller.signInFormKey,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -129,16 +137,21 @@ class _AuthScreenState extends State<AuthScreen> {
                         CustomTextFormField(
                             keyboardType: TextInputType.emailAddress,
                             textInputAction: TextInputAction.next,
-                            controller: controller.emailAndPhoneController,
-                            suffixIcon: controller.emailAndPhoneController.text.isEmpty
+                            controller: controller.emailAndPhoneControllerSignIn,
+                            suffixIcon: controller.emailAndPhoneControllerSignIn.text.isEmpty
                                 ? nil
                                 : IconButton(
                                     onPressed: () {
-                                      controller.emailAndPhoneController.clear();
+                                      controller.emailAndPhoneControllerSignIn.clear();
                                     },
                                     icon: const Icon(Icons.close_outlined))),
-                        const CustomButton(
+                        CustomButton(
                           text: AppConstants.continue_,
+                          onPressed: () {
+                            if (controller.signInFormKey.currentState!.validate()) {
+                              controller.signInUser(context: context);
+                            }
+                          },
                         ),
                       ],
                     )).box.color(Colors.white).padding(SigninPadding.onlyLAndRTwentyP).make(),

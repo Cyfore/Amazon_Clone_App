@@ -1,6 +1,8 @@
 import 'package:amazon_clone_app/constants/consts.dart';
+import 'package:amazon_clone_app/models/user.dart';
 
 import '../features/auth/auth_screen.dart';
+import '../features/services/auth_service.dart';
 
 class AuthController extends GetxController {
   Auth auth = Auth.signin;
@@ -8,22 +10,45 @@ class AuthController extends GetxController {
   RxBool isPasswordVisible = false.obs;
   static AuthController instance = Get.find();
   final signUpFormKey = GlobalKey<FormState>();
-  late TextEditingController emailAndPhoneController, passwordController, userNameAndSurController;
+  final signInFormKey = GlobalKey<FormState>();
+  final AuthService authService = AuthService();
+  late TextEditingController emailAndPhoneControllerSignUp,
+      emailAndPhoneControllerSignIn,
+      passwordController,
+      userNameAndSurController;
+  final User _user = User(id: '', name: '', password: '', address: '', type: '', token: '', email: '');
+
+  User get user => _user;
+  @override
+  void onInit() {
+    emailAndPhoneControllerSignUp = TextEditingController();
+    emailAndPhoneControllerSignIn = TextEditingController();
+    passwordController = TextEditingController();
+    userNameAndSurController = TextEditingController();
+
+    controllerAddListener(emailAndPhoneControllerSignUp);
+    controllerAddListener(emailAndPhoneControllerSignIn);
+    controllerAddListener(passwordController);
+    controllerAddListener(userNameAndSurController);
+    super.onInit();
+  }
+
   radioOnChanged(Auth? val) {
     auth = (val ?? Auth.signin);
     update();
   }
 
-  @override
-  void onInit() {
-    emailAndPhoneController = TextEditingController();
-    passwordController = TextEditingController();
-    userNameAndSurController = TextEditingController();
+  void signUpUser({required BuildContext context}) {
+    authService.signUpUser(
+        context: context,
+        email: emailAndPhoneControllerSignUp.text,
+        password: passwordController.text,
+        name: userNameAndSurController.text);
+  }
 
-    controllerAddListener(emailAndPhoneController);
-    controllerAddListener(passwordController);
-    controllerAddListener(userNameAndSurController);
-    super.onInit();
+  void signInUser({required BuildContext context}) {
+    authService.signInUser(
+        context: context, email: emailAndPhoneControllerSignIn.text, password: passwordController.text);
   }
 
   controllerAddListener(TextEditingController controller) {
@@ -31,6 +56,7 @@ class AuthController extends GetxController {
   }
 
   void signOut() {
-    emailAndPhoneController.clear();
+    emailAndPhoneControllerSignUp.clear();
+    emailAndPhoneControllerSignIn.clear();
   }
 }

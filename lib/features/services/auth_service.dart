@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:amazon_clone_app/constants/consts.dart';
 import 'package:amazon_clone_app/constants/error_handling.dart';
 import 'package:amazon_clone_app/constants/utils.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../constants/.env.dart';
 import '../../models/user.dart';
@@ -23,13 +24,13 @@ class AuthService {
         body: user.toJson(),
         headers: <String, String>{'Content-Type': 'application/json; charset=UTF-8'},
       );
-      httpErrorHandle(
-        response: res,
-        context: context,
-        onSuccess: () {
-          showSnackBar(context, 'Account created! Login with the same credentials');
-        },
-      );
+      if (context.mounted) {
+        return httpErrorHandle(
+          response: res,
+          context: context,
+          onSuccess: () {},
+        );
+      }
     } catch (er) {
       showSnackBar(context, er.toString());
     }
@@ -50,12 +51,18 @@ class AuthService {
         }),
         headers: <String, String>{'Content-Type': 'application/json; charset=UTF-8'},
       );
-      print(res.body);
-      httpErrorHandle(
-        response: res,
-        context: context,
-        onSuccess: () {},
-      );
+
+      debugPrint(res.body);
+      if (context.mounted) {
+        return httpErrorHandle(
+          response: res,
+          context: context,
+          onSuccess: () async {
+            SharedPreferences prefs = await SharedPreferences.getInstance();
+            await prefs.setString('x-auth-token', jsonDecode(res.body)['token']);
+          },
+        );
+      }
     } catch (er) {
       showSnackBar(context, er.toString());
     }
