@@ -21,6 +21,12 @@ class CustomTextFormField extends StatelessWidget {
       controller: controller,
       obscureText: obscureText,
       decoration: inputDecoration(suffixIcon: suffixIcon),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Enter your value';
+        }
+        return null;
+      },
     );
   }
 }
