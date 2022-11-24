@@ -7,3 +7,10 @@ void showSnackBar(BuildContext context, String text) {
     ),
   );
 }
+
+
+// void showSnackBar(BuildContext context, String text) {
+//   Get.showSnackbar(GetSnackBar(
+//     messageText: Text(text),
+//   ));
+// }
