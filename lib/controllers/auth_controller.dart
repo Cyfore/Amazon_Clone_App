@@ -16,7 +16,7 @@ class AuthController extends GetxController {
       emailAndPhoneControllerSignIn,
       passwordController,
       userNameAndSurController;
-  final User _user = User(id: '', name: '', password: '', address: '', type: '', token: '', email: '');
+  User _user = User(id: '', name: '', password: '', address: '', type: '', token: '', email: '');
 
   User get user => _user;
   @override
@@ -31,6 +31,11 @@ class AuthController extends GetxController {
     controllerAddListener(passwordController);
     controllerAddListener(userNameAndSurController);
     super.onInit();
+  }
+
+  void setUser(String user) {
+    _user = User.fromJson(user);
+    update();
   }
 
   radioOnChanged(Auth? val) {
