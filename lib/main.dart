@@ -19,10 +19,9 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final AuthService authService = AuthService();
-  final AuthController authController = Get.put(AuthController());
   @override
   void initState() {
-    authController.getUserData(context: context);
+    authService.getUserData(context: context);
     super.initState();
   }
 
