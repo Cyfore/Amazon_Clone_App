@@ -5,6 +5,7 @@ class WelcomeButton extends StatelessWidget {
   final Map<String, String> info;
   final int color;
   final int authRoute;
+
   @override
   Widget build(BuildContext context) {
     var controller = Get.put(AuthController());

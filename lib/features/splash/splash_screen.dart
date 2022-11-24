@@ -1,3 +1,4 @@
+import 'package:amazon_clone_app/global/controllers/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,15 +13,19 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  changeScreen() {
-    Future.delayed(const Duration(seconds: 2), () {
-      Get.to(const WelcomeScreen(), duration: const Duration(seconds: 1), transition: Transition.fade);
-    });
+  changeScreen() async {
+    await Future.delayed(const Duration(seconds: 2));
+    if (AuthController.instance.user.token!.isEmpty) {
+      Future.delayed(const Duration(seconds: 2), () {
+        Get.to(const WelcomeScreen(), duration: const Duration(seconds: 1), transition: Transition.fade);
+      });
+    }
   }
 
   @override
   void initState() {
     changeScreen();
+
     super.initState();
   }
 

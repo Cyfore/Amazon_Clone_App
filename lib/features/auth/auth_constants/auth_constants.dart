@@ -1,4 +1,4 @@
-import '../../../routes/routes.dart';
+import '../../../global/routes/routes.dart';
 
 class AuthConstants {
   AuthConstants._();

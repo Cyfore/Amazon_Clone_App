@@ -3,7 +3,7 @@ library signin_screen;
 import 'package:amazon_clone_app/common/widgets/radio_list_tile/custom_radio_list_tile.dart';
 import 'package:amazon_clone_app/common/widgets/textfield/custom_textfiled.dart';
 import 'package:amazon_clone_app/constants/consts.dart';
-import 'package:amazon_clone_app/controllers/auth_controller.dart';
+import 'package:amazon_clone_app/global/controllers/auth_controller.dart';
 import 'package:amazon_clone_app/features/auth/auth_constants/auth_constants.dart';
 import 'package:amazon_clone_app/features/services/auth_service.dart';
 
@@ -24,7 +24,6 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
-  final controller = Get.put(AuthController());
   final AuthService authService = AuthService();
 
   RxBool isPasswordVisible = false.obs;
