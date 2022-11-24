@@ -38,6 +38,7 @@ class AuthController extends GetxController {
     update();
   }
 
+
   void setUserFromModel(User user) {
     _user = user;
     update();

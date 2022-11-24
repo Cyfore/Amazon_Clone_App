@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:amazon_clone_app/constants/consts.dart';
 import 'package:amazon_clone_app/constants/error_handling.dart';
 import 'package:amazon_clone_app/constants/utils.dart';
-
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../constants/.env.dart';

@@ -12,6 +12,7 @@ class RoutesClass {
   static const String login = '/login';
   static const String error = '/error';
   static const String auth = '/auth';
+
   static const String welcome = '/welcome';
   static const String home = '/home';
   static String getSplashRoute() => splash;
@@ -36,5 +37,6 @@ class RoutesClass {
       name: home,
       page: () => const HomeView(),
     ),
+    GetPage(name: home, page: () => const HomeView()),
   ];
 }
