@@ -1,9 +1,9 @@
-import 'package:amazon_clone_app/global/controllers/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import '../../common/widgets/app_logo.dart';
-import '../welcome/welcome_screen.dart';
+import '../../global/routes/routes.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -14,12 +14,9 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   changeScreen() async {
-    await Future.delayed(const Duration(seconds: 2));
-    if (AuthController.instance.user.token!.isEmpty) {
-      Future.delayed(const Duration(seconds: 2), () {
-        Get.to(const WelcomeScreen(), duration: const Duration(seconds: 1), transition: Transition.fade);
-      });
-    }
+    final userData = GetStorage();
+    Future.delayed(const Duration(seconds: 2)).then((value) =>
+        userData.read('isLogged') ? Get.offAllNamed(RoutesClass.home) : Get.offAllNamed(RoutesClass.welcome));
   }
 
   @override

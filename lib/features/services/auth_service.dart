@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:amazon_clone_app/constants/consts.dart';
 import 'package:amazon_clone_app/constants/error_handling.dart';
 import 'package:amazon_clone_app/constants/utils.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../constants/.env.dart';
@@ -78,6 +79,7 @@ class AuthService {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       String? token = prefs.getString('x-auth-token');
+      final userData = GetStorage();
 
       if (token == null) {
         prefs.setString('x-auth-token', '');
@@ -90,7 +92,6 @@ class AuthService {
           'x-auth-token': token!,
         },
       );
-
       var response = jsonDecode(tokenRes.body);
       if (response == true) {
         // get user data
@@ -101,7 +102,10 @@ class AuthService {
             'x-auth-token': token,
           },
         );
+        userData.write('user', userRes.body);
+        userData.write('isLogged', true);
         AuthController.instance.setUser(userRes.body);
+        // Get.offNamedUntil(RoutesClass.home, (route) => false);
       }
     } catch (er) {
       showSnackBar(context, er.toString());

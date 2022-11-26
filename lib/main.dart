@@ -1,12 +1,15 @@
 import 'package:amazon_clone_app/features/home/home_view.dart';
 import 'package:amazon_clone_app/features/services/auth_service.dart';
+import 'package:amazon_clone_app/features/splash/splash_screen.dart';
 import 'package:amazon_clone_app/features/welcome/welcome_screen.dart';
 import 'package:amazon_clone_app/global/controllers/auth_controller.dart';
+import 'package:get_storage/get_storage.dart';
 
 import 'constants/consts.dart';
 import 'global/routes/routes.dart';
 
 void main() async {
+  await GetStorage.init();
   runApp(const MyApp());
 }
 
@@ -19,8 +22,10 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final AuthService authService = AuthService();
+  final userData = GetStorage();
   @override
   void initState() {
+    userData.writeIfNull('isLogged', false);
     authService.getUserData(context: context);
     super.initState();
   }
@@ -35,7 +40,8 @@ class _MyAppState extends State<MyApp> {
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: getThemeData(),
-          home: AuthController.instance.user.token!.isNotEmpty ? const HomeView() : const WelcomeScreen(),
+          home: const SplashScreen(),
+          // home: AuthController.instance.user.token!.isNotEmpty ? HomeView() : const WelcomeScreen(),
           getPages: RoutesClass.routes,
         );
       },

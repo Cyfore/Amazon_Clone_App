@@ -16,7 +16,7 @@ class AuthController extends GetxController {
       emailAndPhoneControllerSignIn,
       passwordController,
       userNameAndSurController;
-  User _user = User(id: '', name: '', password: '', address: '', type: '', token: '', email: '');
+  late User _user = User(id: '', name: '', password: '', address: '', type: '', token: '', email: '');
 
   User get user => _user;
   @override
@@ -37,7 +37,6 @@ class AuthController extends GetxController {
     _user = User.fromJson(user);
     update();
   }
-
 
   void setUserFromModel(User user) {
     _user = user;

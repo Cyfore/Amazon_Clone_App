@@ -35,8 +35,7 @@ class RoutesClass {
     GetPage(name: auth, page: () => const AuthScreen()),
     GetPage(
       name: home,
-      page: () => const HomeView(),
+      page: () => HomeView(),
     ),
-    GetPage(name: home, page: () => const HomeView()),
   ];
 }
